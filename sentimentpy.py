@@ -7,13 +7,12 @@
 # should update it into conda 
 #textblob only has polarity????
 #okey textblob need machine learning to categorize emotion
-#
+#the old code use lexicon approach to categorize emotion
 
 from textblob import TextBlob
 import get_twi
 
 import pandas
-from emotion_predictor import EmotionPredictor
 
 #testfile
 testfile=pandas.read_csv('testfile.csv')

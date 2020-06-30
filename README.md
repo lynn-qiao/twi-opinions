@@ -1,6 +1,7 @@
 <h3> Goal of this project </h3>
 <p> Monitor regional reaction towards COVID-19 by analyzing sentiment from twitter posts. </p>
 <p> <i> a simplified version of social opinion monitor? </i></p>
+<p><i> or a covid-19 online reactions map </i> </p>
 
 <h3> What it provides</h3>
 <p> 1. an overall distribution of sentiment polarity</p>
