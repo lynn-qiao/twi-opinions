@@ -54,7 +54,7 @@ def stream_tweets(search_term):
     data = [] # empty list to which tweet_details obj will be added
     counter = 0 # counter to keep track of each iteration
     # for tweet in tweepy.Cursor(api.search, q=search_term, count=100, lang='en', result_type='popular').items(): 
-    for tweet in tweepy.Cursor(api.search, q=search_term, count=100, lang='en', tweet_mode='extended').items(): 
+    for tweet in tweepy.Cursor(api.search, wait_on_rate_limit=True, q=search_term, count=100, lang='en', tweet_mode='extended').items(): 
         #okay I cannot search for popularity, fine
         tweet_details = {}
         tweet_details['text'] = tweet.full_text
@@ -133,9 +133,9 @@ s3: filter content & replace with abbr:
 
 
 def filter_na(df):
-    df['location']=df['location'].str.strip()
-    df['state']=[re.split(', ',loc) for loc in df['location']] #split location string by comma
-    df['len_counter']=[len(item) for item in df['state']] #filter out irregular format
+    df.loc[:,'location']=df.loc[:,'location'].str.strip()
+    df['state']=[re.split(', ',loc) for loc in df.loc[:,'location']] #split location string by comma
+    df['len_counter']=[len(item) for item in df.loc[:,'state']] #filter out irregular format
     df_nomissing=df[df.len_counter ==2]
     return df_nomissing
 
@@ -217,9 +217,9 @@ def state_code_finder(row):
 
 def filter_non_us(data):
     df=filter_na(data)
-    df['position0']=[item[0] for item in df['state']]
-    df['position1']=[item[1] for item in df['state']]
-    df.loc[:,'state_code'] = None
+    df['position0']=[item[0] for item in df.loc[:,'state']]
+    df['position1']=[item[1] for item in df.loc[:,'state']]
+    df['state_code'] = None
     df['state_code'] = df.apply (lambda row: state_code_finder(row), axis=1)
     df_us=df[df.state_code !='nonUS']
     return df_us
@@ -239,8 +239,8 @@ def remove_mention(txt):
     return " ".join(re.sub(r'@[A-Za-z0-9]+', "", txt).split())
 
 def clean_text(df):
-    df['text']=[remove_url(text) for text in df['text']] 
-    df['text']=[remove_mention(text) for text in df['text']] 
+    df.loc[:,'text']=[remove_url(text) for text in df.loc[:,'text']] 
+    df.loc[:,'text']=[remove_mention(text) for text in df.loc[:,'text']] 
     return df
 
 
@@ -258,7 +258,7 @@ def get_covid_tweet(search_term):
     df_us=filter_non_us(data)   
     df_no_url=clean_text(df_us)
     df_no_url=df_no_url.reset_index(drop=True)
-    return df_no_url
+    return df_no_url[['text','state_code']]
 
 
 
@@ -272,8 +272,8 @@ current accuracy: 79%
 
 
 """
-# import pickle
-# import os, sys
+import pickle
+import os, sys
 
 # path = os.path.abspath(os.path.dirname(sys.argv[0]))
 # path1=os.path.join(path,'models', 'Sentiment-SGDClean.pickle')
@@ -288,13 +288,14 @@ current accuracy: 79%
 
 
 
-"""
-emotion categorization
-"""
+# """
+# emotion categorization
+# """
 
-# import pickle
 
-# file = open('D:/capstone-project/emo_classifier.pickle', 'rb')
+# path2=os.path.join(path,'models', 'emo_classifier.pickle')
+
+# file = open(path2, 'rb')
 # emo_classifier = pickle.load(file)
 # file.close()
 
@@ -387,6 +388,14 @@ def emotion_chart(df_no_url):
 # if __name__=='__main__':
 
 
+# data=get_covid_tweet('death')
+
+# data['sentiment']=SGD.predict(data.loc[:,'text'])
+# data['emotion']=emo_classifier.predict(data.loc[:,'text'])
+# data=data[['sentiment', 'emotion']]
+# e_chart=emotion_chart(data)
+# e_chart.save('D:/capstone-project/chart1.html')
+# e_json=e_chart.to_json()
 
 # data=pd.DataFrame(stream_tweets(search_term))
 #     df_us=filter_non_us(data)   

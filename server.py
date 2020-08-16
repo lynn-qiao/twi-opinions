@@ -40,19 +40,20 @@ def result():
     wordcloud=get_wordcloud(df)
 
     path = os.path.abspath(os.path.dirname(sys.argv[0]))
-    path1=os.path.join(path,'models', 'Sentiment-SGDClean.pickle')
+    path1=os.path.join(path,'lib','models', 'Sentiment-SGDClean.pickle')
 
     file = open(path1, 'rb')
     SGD = pickle.load(file)
     file.close()
 
-    path2=os.path.join(path,'models', 'emo_classifier.pickle')
+    path2=os.path.join(path,'lib','models', 'emo_classifier.pickle')
     file = open(path2, 'rb')
     emo_classifier = pickle.load(file)
     file.close()
     
-    df['sentiment']=SGD.predict(df['text'])
-    df['emotion']=emo_classifier.predict(df['text'])
+    df['sentiment']=SGD.predict(df.loc[:,'text'])
+    
+    df['emotion']=emo_classifier.predict(df.loc[:,'text'])
     s_chart=sentiment_chart(df)
     s_chart_json = s_chart.to_json()
     e_chart=emotion_chart(df)
