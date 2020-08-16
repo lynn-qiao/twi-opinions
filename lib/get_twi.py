@@ -65,7 +65,7 @@ def stream_tweets(search_term):
         data.append(tweet_details)
         
         counter += 1
-        if counter == 5000: 
+        if counter == 1000: 
             break
         else:
             pass
