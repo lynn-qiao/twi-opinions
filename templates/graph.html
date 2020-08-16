@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Generated Plot</title>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+    </head>
+    
+    <body>
+        <h1>{{ shape | safe}} tweets found</h1>
+        
+        <div id='s_chart'></div>
+        <script>
+            var s_spec = {{ s_chart | safe }};
+            vegaEmbed("#viz", s_spec);
+        </script>
+        <div id='e_chart'></div>
+        <script>
+            var e_spec={{ e_chart | safe}};
+            vegaEmbed("#viz", e_spec)
+        </script>
+    </body>
+</html>

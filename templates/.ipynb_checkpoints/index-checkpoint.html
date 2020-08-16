@@ -1,0 +1,36 @@
+<html>
+        <body>
+            <h1>Regression On Random Values</h1>
+            <h2>Generate values</h2>
+            <form action='random_regression' method='get'>
+                <label>Size of Data Set:<br>
+                    <input name='n' placeholder='N: 1000' value='1000' size='9'>
+                </label><br><br>
+                <label>Normal Distribution of X Values:<br>
+                    <input name='mu' placeholder='Mean: 0' value='0' size="9"><br>
+                    <input name='sigma' placeholder='Variance: 1' value='1' size="12">
+                </label><br><br>
+                <label>True Population Coefficients:<br>
+                    <input name='slope' placeholder='Slope: 2' value='2'><br>
+                    <input name='intercept' placeholder='Intercept: 0' value='1'>
+                </label><br><br>
+                <label>Random Noise<br>
+                    <input name='noise' placeholder='Variance: 1' value='1'>
+                </label>
+                <br><br>  
+                <label>Models to Fit:<br>
+                    <input type="checkbox" id="linear" name="linear" value="LinearRegression">
+                    <label for="linear">Linear Regression</label><br>
+                    <input type="checkbox" id="ridge" name="ridge" value="Ridge">
+                    <label for="ridge">Ridge Regression</label><br>
+                    <input type="checkbox" id="rf" name="rf" value="RandomForestRegressor">
+                    <label for="rf">Random Forest</label><br><br>
+                </label>
+                <label>Train-test Split:<br>
+                <input name='split' placeholder='Test Set Proportion: 0.2' value='0.2' size='0'>
+                </label><br>
+                <br> <br>
+                <input type='submit'>
+            </form>
+        </body>
+    </html>
