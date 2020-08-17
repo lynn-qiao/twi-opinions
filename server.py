@@ -52,17 +52,17 @@ def result():
     file.close()
     
     df['sentiment']=SGD.predict(df.loc[:,'text'])
-    
     df['emotion']=emo_classifier.predict(df.loc[:,'text'])
     s_chart=sentiment_chart(df)
-    s_chart_json = s_chart.to_json()
     e_chart=emotion_chart(df)
-    e_chart_json = e_chart.to_json()
+    s_chart_json=s_chart.to_json()
+    e_chart_json=e_chart.to_json()
 
 
 
 
-    return render_template('graph.html', shape=shape, s_chart=s_chart_json, e_chart=e_chart_json)
+
+    return render_template('graph.html', shape=shape, s_chart=s_chart_json, e_chart=e_chart_json, img_data=wordcloud)
 
 
 

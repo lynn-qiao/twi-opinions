@@ -8,12 +8,19 @@
     
     <body>
         <h1>{{ shape | safe}} tweets found</h1>
-        
-
-        <div id='viz'></div>
+        <div id='viz1'></div>
         <script>
-            var spec = {{ s_chart | safe }};
-            vegaEmbed("#viz", spec);
+            var spec1 = {{ s_chart | safe }};
+            vegaEmbed("#viz1", spec1);
         </script>
+
+        <div id='viz2'></div>
+        <script>
+            var spec2 = {{ e_chart | safe }};
+            vegaEmbed("#viz2", spec2);
+        </script>
+        <div id='wordcloud'></div>
+        <img src="data:image/jpeg;base64,{{ img_data }}" alt="img_data"  id="imgslot"  style="width:450px;height:300px;"/>
+
     </body>
 </html>

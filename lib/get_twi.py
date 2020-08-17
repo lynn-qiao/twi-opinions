@@ -343,7 +343,7 @@ def sentiment_chart(df_no_url):
     )
 
     
-    text = alt.Chart(df_no_url).mark_text(dx=-100, fontSize=50 , color='white').encode(
+    text = alt.Chart(df_no_url).mark_text(dx=-30, fontSize=30 , color='white').encode(
         alt.Y("sentiment", title=''),
         alt.X('count()', title='Number of Tweets', axis=alt.Axis(labels=False)),
         text=alt.Text('count()')
