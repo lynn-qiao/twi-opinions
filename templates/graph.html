@@ -8,17 +8,12 @@
     
     <body>
         <h1>{{ shape | safe}} tweets found</h1>
-
-        <h2>{{pos | safe}} are positive</h2>
-        <h2>{{neg | safe}} are negative</h2>
         
-        <div id='chart'></div>
-        <script>
-            var s_spec = {{ s_chart | safe }};
-            vegaEmbed("#viz", s_spec);
 
-            var e_spec={{ e_chart | safe}};
-            vegaEmbed("#viz", e_spec);
+        <div id='viz'></div>
+        <script>
+            var spec = {{ s_chart | safe }};
+            vegaEmbed("#viz", spec);
         </script>
     </body>
 </html>
