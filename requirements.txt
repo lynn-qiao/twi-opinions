@@ -7,6 +7,5 @@ tweepy
 numpy
 pandas
 textblob
-pickle
 wordcloud
 scikit-learn
