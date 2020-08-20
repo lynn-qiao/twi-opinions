@@ -59,9 +59,6 @@ def result():
     e_chart_json=e_chart.to_json()
 
 
-
-
-
     return render_template('graph.html', shape=shape, s_chart=s_chart_json, e_chart=e_chart_json, img_data=wordcloud)
 
 
