@@ -6,7 +6,6 @@ altair
 tweepy
 numpy
 pandas
-itertools
 collections
 datetime
 json
