@@ -6,8 +6,6 @@ altair
 tweepy
 numpy
 pandas
-collections
-datetime
 json
 textblob
 pickle
