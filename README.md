@@ -12,6 +12,8 @@
 <h3> Data source</h3>
 <p> Twitter posts, 1000 recent tweets per search</p>
 <p> Filtered to keep only Tweets tagged with US location (around 200 per search) </p>
+<p> <i> it will take about 2-3 minutes to retrieve the data, refresh the page if no response</i></p>
+
 
 <h3> Model used</h3>
 <h4> Sentiment polariy analysis </h4>
@@ -29,7 +31,7 @@ Testing accuracy: .60  <br>
 </p>
 
 <h3> Graph </h3>
-<p> see chart.html and chart1.html for sample graph</p>
+<p> see chart.html and chart1.html for example graph</p>
 
 
 
