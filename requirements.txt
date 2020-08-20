@@ -6,12 +6,7 @@ altair
 tweepy
 numpy
 pandas
-json
 textblob
 pickle
-base64
-io
 wordcloud
-os
-sys
-sklearn
+scikit-learn
