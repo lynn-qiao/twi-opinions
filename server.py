@@ -37,7 +37,7 @@ def result():
     search_term='{} (COVID OR COVID-19 OR Coronavirus) -filter:retweets'.format(keyword)
     df=get_covid_tweet(search_term)
     shape=df.shape[0]
-    wordcloud=get_wordcloud(df)
+    wordcloud=get_wordcloud(df,keyword)
 
     path = os.path.abspath(os.path.dirname(sys.argv[0]))
     path1=os.path.join(path,'lib','models', 'Sentiment-SGDClean.pickle')

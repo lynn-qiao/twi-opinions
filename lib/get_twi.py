@@ -311,9 +311,12 @@ import io
 from wordcloud import WordCloud, STOPWORDS
 
 
-def get_wordcloud(df):
+def get_wordcloud(df, term):
     texts=df['text'].tolist()
     text=' '.join(texts)
+    STOPWORDS.update(['COVID', 'COVID-19','Coronavirus'])
+    STOPWORDS.update(term)
+    
     pil_img = WordCloud(width = 3000, height = 2000, random_state=1, 
                       background_color='salmon', colormap='Pastel1', 
                       collocations=False, stopwords = STOPWORDS).generate(text=text).to_image()
@@ -390,20 +393,22 @@ def emotion_chart(df_no_url):
 
 # data=get_covid_tweet('death')
 
-# data['sentiment']=SGD.predict(data.loc[:,'text'])
-# data['emotion']=emo_classifier.predict(data.loc[:,'text'])
-# data=data[['sentiment', 'emotion']]
-# e_chart=emotion_chart(data)
-# e_chart.save('D:/capstone-project/chart1.html')
-# e_json=e_chart.to_json()
 
-# data=pd.DataFrame(stream_tweets(search_term))
-#     df_us=filter_non_us(data)   
-#     df_no_url=clean_text(df_us)
-#     df_no_url=df_no_url.reset_index(drop=True)
-#     df_no_url['sentiment']=SGD.predict(df_no_url['text'])
-#     df_no_url['emotion']=emo_classifier.predict(df_no_url['text'])
-#     wordcl=get_wordcloud(df_no_url)
+
+# # data['sentiment']=SGD.predict(data.loc[:,'text'])
+# # data['emotion']=emo_classifier.predict(data.loc[:,'text'])
+# # data=data[['sentiment', 'emotion']]
+# # e_chart=emotion_chart(data)
+# # e_chart.save('D:/capstone-project/chart1.html')
+# # e_json=e_chart.to_json()
+
+# # data=pd.DataFrame(stream_tweets(search_term))
+# #     df_us=filter_non_us(data)   
+# #     df_no_url=clean_text(df_us)
+# #     df_no_url=df_no_url.reset_index(drop=True)
+# #     df_no_url['sentiment']=SGD.predict(df_no_url['text'])
+# #     df_no_url['emotion']=emo_classifier.predict(df_no_url['text'])
+#     wordcl=get_wordcloud(data, 'death')
 #     s_chart=sentiment_chart(df_no_url)
 #     e_chart=emotion_chart(df_no_url)
     
