@@ -7,20 +7,43 @@
     </head>
     
     <body>
-        <h1>{{ shape | safe}} tweets found</h1>
-        <div id='viz1'></div>
-        <script>
-            var spec1 = {{ s_chart | safe }};
-            vegaEmbed("#viz1", spec1);
-        </script>
+        <h1><center>{{ shape | safe}} tweets found </center></h1>
 
-        <div id='viz2'></div>
-        <script>
-            var spec2 = {{ e_chart | safe }};
-            vegaEmbed("#viz2", spec2);
-        </script>
-        <div id='wordcloud'></div>
-        <img src="data:image/jpeg;base64,{{ img_data }}" alt="img_data"  id="imgslot"  style="width:450px;height:300px;"/>
+        <div style="width: 100%; display: table;">
+            <div style="display: table-row; height: 100px;">
+                        <div id='viz1' style="width: 50%; display: table-cell;">
+                            <script>
+                                var spec1 = {{ s_chart | safe }};
+                                vegaEmbed("#viz1", spec1);
+                            </script>
+                        </div>
+                        <div id='viz2'  style="display: table-cell">
+                            <script>
+                                var spec2 = {{ e_chart | safe }};
+                                vegaEmbed("#viz2", spec2);
+                            </script>
+                        </div>
+            </div>
+            <div style="display: table-row; height: 300px;">
+                <div id='wordcloud' style="width: 50%; display: table-cell;">
+                    <img src="data:image/jpeg;base64,{{ img_data }}" alt="img_data"  id="imgslot"  style="width:450px;height:300px;"/>
+                </div>
+                <div id='backbutton' style="display: table-cell;">
+
+                    <button onclick="goBack()">Go Back</button>
+                        <script>
+                        function goBack() {
+                        window.history.back();
+                        }
+                        </script>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
 
     </body>
 </html>
