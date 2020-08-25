@@ -1,27 +1,39 @@
-<h2> Important Note for me </h2>
-<p> from this source https://investigate.ai/investigating-sentiment-analysis/designing-your-own-sentiment-analysis-tool/</p>
-<p> It seems that SA tools provided by different modules does not agree with each other, and each tool is trained on different sets. </p>
-<p> The best way may be to train my own model based on a selection of twitter posts </p>
-<p> The link above have a tutorial on building a positive-negative sentiment analysis tool. But it does not include emotion. For emotion, NRC has a huge list of words associated with 8 emotions.</p>
-<p> NRCLex does not work well with twitter (personal experience)</p>
 
-
-
-
-
-<h3> Goal of this project </h3>
-<p> Monitor regional reaction towards COVID-19 by analyzing sentiment from twitter posts. </p>
-<p> <i> a simplified version of social opinion monitor? </i></p>
-<p><i> or a covid-19 online reactions map </i> </p>
+<h2> Goal of this project </h2>
+<p> Provide timely overview of twitter posts with COVID-19 related topics </p>
+<p><i> suggested usage: pilot study, web-based study in social science fields  </i> </p>
 
 <h3> What it provides</h3>
-<p> 1. an overall distribution of sentiment polarity (axis: positive/negative)</p>
-<p> 2. histogram of emotions expressed in COVID-19 related posts</p>
-<p> 3. frequent topics in COVID-19 related posts</p>
-<p> 4. reaction forcast? </p>
-<p> 5. sketch out a profile for high-risk groups? </p>
+<p> 1. an overall distribution of sentiment polarity (positive/negative)</p>
+<p> 2. histogram of emotions (enjoyment, neutral, anger, fear, sadness)</p>
+<p> 3. frequent mentioned words under the topic</p>
 
-<h3> Possible usage</h3>
-<p> 1. use it as a overview of how people react to COVID-19 online </p>
-<p> 2. frequent topics in COVID-19 could reveal some of the major concerns that needs to be addressed</p>
-<p> <i> 3. use as a research topic generator <s>for social science students</s></i> </p>
+
+<h3> Data source</h3>
+<p> Twitter posts, 1000 recent tweets per search</p>
+<p> Filtered to keep only Tweets tagged with US location (around 200 per search) </p>
+<p> <i> it will take about 2-3 minutes to retrieve the data, refresh the page if no response</i></p>
+
+
+<h3> Model used</h3>
+<h4> Sentiment polariy analysis </h4>
+<p>
+Bags of words Approach using a SGDClassifier <br>
+Training accuracy: .80 <br>
+Testing accuracy: .79  <br>
+</p>
+
+<h4> Emotion Classification </h4>
+<p>
+Bags of words Approach using a SGDClassifier <br>
+Base accuracy: .20 <br>
+Testing accuracy: .60  <br>
+</p>
+
+<h3> Graph </h3>
+<p> see chart.html and chart1.html for example graph</p>
+
+
+
+  
+
